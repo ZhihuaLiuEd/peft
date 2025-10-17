@@ -400,6 +400,10 @@ class LoraConfig(PeftConfig):
             ),
         },
     )
+    num_experts: int = field(default=4, metadata={"help": "Total number of experts. Added for Mixture-of-LoRAs in ICEdit"})
+    expert_rank: int = field(default=32, metadata={"help": "Per-expert LoRA rank. Added for Mixture-of-LoRAs in ICEdit"})
+    expert_alpha: int = field(default=32, metadata={"help": "Per-expert LoRA alpha. Added for Mixture-of-LoRAs in ICEdit"})
+    top_k: int = field(default=1, metadata={"help": "Number of activated experts. Added for Mixture-of-LoRAs in ICEdit"})
     exclude_modules: Optional[Union[list[str], str]] = field(
         default=None,
         metadata={"help": "List of module names or regex expression of the module names to exclude from Lora."},
